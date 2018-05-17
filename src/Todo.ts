@@ -50,7 +50,7 @@ export default class Todo {
     doneItem(index: number) {
         this.items[index].done = true;
     }
-
+    
     /**
      * 更新 ul 列表
      * 会重新渲染 ul 内的全部内容
@@ -61,6 +61,9 @@ export default class Todo {
         this.items.forEach((item, index) => {
             const liElement = document.createElement('li');
 
+            const labelElement = document.createElement('label');
+            liElement.appendChild(labelElement);
+
             // 创建并添加复选框
             const checkboxElement = document.createElement('input');
             checkboxElement.type = 'checkbox';
@@ -68,12 +71,12 @@ export default class Todo {
             checkboxElement.onchange = (e) => {
                 this.doneItem(index);
             }
-            liElement.appendChild(checkboxElement);
+            labelElement.appendChild(checkboxElement);
 
             // 创建并添加文本
             const textElement = document.createElement('span');
             textElement.innerText = item.content;
-            liElement.appendChild(textElement);
+            labelElement.appendChild(textElement);
 
             this.ulElement.appendChild(liElement);
         });

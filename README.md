@@ -4,5 +4,5 @@
 
 ```bash
 npm install
-npm start & npm serve
+npm start & npm run serve
 ```
